@@ -19,6 +19,8 @@ async function routes(fastify, options) {
   });
 
   fastify.get('/animals/:animal', async (request, reply) => {
+    // console.log('request.params.animal', request.params.animal);
+
     const result = await collection.findOne({ animal: request.params.animal });
     if (!result) {
       throw new Error('Invalid value');
