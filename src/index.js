@@ -1,15 +1,12 @@
-// from https://medium.com/@demian.kostelny/fastify-quick-guide-for-beginners-8534a107cc18
 import Fastify from 'fastify';
+import firstRoute from './our-first-route.js';
 
 // Inside of Fastify object you can write configuration for app
 const fastify = Fastify({
   logger: true, // Enable logger
 });
 
-// Create a routes for homepage and about
-fastify.get('/', async function handler(request, reply) {
-  return { some_variable: 'some value of variable' };
-});
+fastify.register(firstRoute);
 
 fastify.get('/about', async function handler(request, reply) {
   return { info: 'Super puper information is saved here' };
